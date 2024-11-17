@@ -1,7 +1,7 @@
 const request = require('supertest');
 const fs = require('fs');
 const path = require('path');
-const { app, server } = require('./app');
+const app = require('./api/index');
 
 const DATA_FILE = path.join(__dirname, './data.json');
 
@@ -15,7 +15,7 @@ beforeAll(() => {
 afterAll(() => {
     // Restore the original data after all tests are done
     fs.writeFileSync(DATA_FILE, originalData);
-    server.close();
+
 });
 
 describe('User Management API Tests', () => {

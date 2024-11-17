@@ -2,8 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs'); // For logging
 
-const { getAllUsers, addUser, deleteUser, getUserById, validateLogin } = require('./components/getObjects');
-
+const { getAllUsers, addUser, deleteUser, getUserById, validateLogin } = require('../components/getObjects');
 
 const app = express();
 app.use(bodyParser.json());
@@ -16,8 +15,7 @@ app.use((req, res, next) => {
     next();
 });
 
-
-// Get All Users, default get all user objects.This if for my take home assignment only. In production, this should be not be available
+// Get All Users
 app.get('/users', (req, res) => {
     try {
         const users = getAllUsers();
@@ -27,12 +25,11 @@ app.get('/users', (req, res) => {
     }
 });
 
-// Get user by id
+// Get User by ID
 app.get('/users/:id', (req, res) => {
     try {
         const id = req.params.id;
         const user = getUserById(id);
-
         res.status(200).json(user);
     } catch (err) {
         res.status(404).json({ error: err.message });
@@ -50,7 +47,7 @@ app.post('/register', async (req, res) => {
     }
 });
 
-// Login for the user by email and password
+// Login User
 app.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -61,7 +58,7 @@ app.post('/login', async (req, res) => {
     }
 });
 
-// Delete useer object
+// Delete User by ID
 app.delete('/users/:id', (req, res) => {
     try {
         const id = req.params.id;
@@ -72,9 +69,11 @@ app.delete('/users/:id', (req, res) => {
     }
 });
 
+if (require.main === module) {
+    const PORT = 3000;
+    const server = app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
+}
 
-const PORT = 3000;
-const server = app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
-module.exports = { app, server} ;
+module.exports = app;
