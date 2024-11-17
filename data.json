@@ -1,0 +1,20 @@
+[
+  {
+    "id": "1",
+    "username": "defaultUser",
+    "email": "default@example.com",
+    "password": "$2b$10$hashedpassword"
+  },
+  {
+    "id": "0f334aa7-f974-4f1b-8ba2-15f260c35ad2",
+    "username": "jeffreyLim",
+    "email": "jeffrey.lim@example.com",
+    "password": "$2b$10$IPYygcY.aeRx5/OfRPfpyuNdHkfR9.7a.AFw8hmVZZqoYWOFpes1u"
+  },
+  {
+    "id": "b34af3e1-0289-4750-a63c-77c05496f43f",
+    "username": "John doe",
+    "email": "john.doe@example.com",
+    "password": "$2b$10$YNklEU6QiGbf.6Lz.xccTuKZYxV2re.qQbBReMtRT8qL4RaXBewTS"
+  }
+]
